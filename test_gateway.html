@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LLM Gateway Quick Tester</title>
+  <style>
+    :root {
+      --bg: #f3f4f0;
+      --panel: #ffffff;
+      --text: #1f2b1f;
+      --muted: #5a665a;
+      --accent: #0f766e;
+      --accent-2: #115e59;
+      --danger: #b91c1c;
+      --border: #d7ddd7;
+      --code-bg: #111827;
+      --code-text: #e5e7eb;
+      --shadow: 0 12px 30px rgba(10, 18, 12, 0.09);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 80% -10%, #d1fae5 0%, rgba(209, 250, 229, 0) 30%),
+        radial-gradient(circle at 10% 110%, #bfdbfe 0%, rgba(191, 219, 254, 0) 35%),
+        var(--bg);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+      font-family: "IBM Plex Serif", Georgia, serif;
+    }
+
+    .muted {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(12, 1fr);
+      margin-top: 14px;
+    }
+
+    .field { grid-column: span 12; }
+    .span-6 { grid-column: span 6; }
+    .span-4 { grid-column: span 4; }
+
+    label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: var(--muted);
+    }
+
+    input, textarea, select, button {
+      width: 100%;
+      font: inherit;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      background: #fff;
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    button {
+      width: auto;
+      background: var(--accent);
+      color: #fff;
+      border: 0;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button.secondary { background: #334155; }
+    button.ghost {
+      background: #fff;
+      color: var(--accent-2);
+      border: 1px solid var(--accent);
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .status {
+      margin-top: 12px;
+      font-size: 0.95rem;
+    }
+
+    .status.error { color: var(--danger); }
+    .status.ok { color: #166534; }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      background: var(--code-bg);
+      color: var(--code-text);
+      border-radius: 12px;
+      padding: 14px;
+      min-height: 130px;
+      border: 1px solid #0b1220;
+    }
+
+    @media (max-width: 760px) {
+      .span-6, .span-4 { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="panel">
+      <h1>LLM Gateway Quick Tester</h1>
+      <p class="muted">Login/register, get JWT access token, send a prompt to <code>/v1/query</code>, and view response.</p>
+
+      <div class="grid">
+        <div class="field">
+          <label for="baseUrl">Base URL</label>
+          <input id="baseUrl" value="http://localhost:8000" />
+        </div>
+        <div class="field span-6">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="user@example.com" />
+        </div>
+        <div class="field span-6">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="your-password" />
+        </div>
+        <div class="field span-6">
+          <label for="fullName">Full Name (register only)</label>
+          <input id="fullName" placeholder="Test User" value="Test User" />
+        </div>
+        <div class="field span-6">
+          <label for="projectId">Project ID</label>
+          <input id="projectId" type="number" min="1" value="1" />
+        </div>
+        <div class="field span-6">
+          <label for="projectProvider">Project Provider (for update)</label>
+          <select id="projectProvider">
+            <option value="">(unchanged)</option>
+            <option value="openai">openai</option>
+            <option value="gemini">gemini</option>
+            <option value="claude">claude</option>
+          </select>
+        </div>
+        <div class="field span-6">
+          <label for="projectName">Project Name (for update)</label>
+          <input id="projectName" placeholder="(unchanged)" />
+        </div>
+        <div class="field span-6">
+          <label for="projectModel">Project Model (for update)</label>
+          <input id="projectModel" placeholder="e.g. gpt-4o-mini" />
+        </div>
+        <div class="field span-6">
+          <label for="projectApiKey">Project API Key (for update)</label>
+          <input id="projectApiKey" type="password" placeholder="(unchanged)" />
+        </div>
+        <div class="field">
+          <label for="projectSystemPrompt">Project System Prompt (for update)</label>
+          <textarea id="projectSystemPrompt" placeholder="(unchanged)"></textarea>
+        </div>
+        <div class="field">
+          <label for="token">Access Token</label>
+          <textarea id="token" placeholder="JWT will appear here after login/register"></textarea>
+        </div>
+        <div class="field">
+          <label for="prompt">Prompt</label>
+          <textarea id="prompt" placeholder="Ask something..."></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <button id="registerBtn" type="button">Register</button>
+        <button id="loginBtn" class="secondary" type="button">Login</button>
+        <button id="updateProjectBtn" class="secondary" type="button">Update Project</button>
+        <button id="sendBtn" class="ghost" type="button">Send Prompt</button>
+        <label style="display:flex; align-items:center; gap:8px; margin:0 0 0 auto;">
+          <input id="stream" type="checkbox" style="width:auto;" /> Stream
+        </label>
+      </div>
+
+      <div id="status" class="status muted">Ready.</div>
+    </section>
+
+    <section class="panel">
+      <label for="response">Response</label>
+      <pre id="response">No response yet.</pre>
+    </section>
+  </main>
+
+  <script>
+    const baseUrlEl = document.getElementById('baseUrl');
+    const emailEl = document.getElementById('email');
+    const passwordEl = document.getElementById('password');
+    const fullNameEl = document.getElementById('fullName');
+    const projectIdEl = document.getElementById('projectId');
+    const projectProviderEl = document.getElementById('projectProvider');
+    const projectNameEl = document.getElementById('projectName');
+    const projectModelEl = document.getElementById('projectModel');
+    const projectApiKeyEl = document.getElementById('projectApiKey');
+    const projectSystemPromptEl = document.getElementById('projectSystemPrompt');
+    const tokenEl = document.getElementById('token');
+    const promptEl = document.getElementById('prompt');
+    const streamEl = document.getElementById('stream');
+    const statusEl = document.getElementById('status');
+    const responseEl = document.getElementById('response');
+
+    const STORAGE_KEY = 'llm_gateway_token';
+    tokenEl.value = localStorage.getItem(STORAGE_KEY) || '';
+
+    function setStatus(message, ok = true) {
+      statusEl.textContent = message;
+      statusEl.className = `status ${ok ? 'ok' : 'error'}`;
+    }
+
+    function normalizeBaseUrl() {
+      return baseUrlEl.value.trim().replace(/\/$/, '');
+    }
+
+    function safeJson(text) {
+      try { return JSON.parse(text); } catch (_) { return text; }
+    }
+
+    async function auth(kind) {
+      const email = emailEl.value.trim();
+      const password = passwordEl.value;
+      const fullName = fullNameEl.value.trim();
+      const base = normalizeBaseUrl();
+
+      if (!email || !password) {
+        setStatus('Email and password are required.', false);
+        return;
+      }
+
+      const endpoint = kind === 'register' ? '/v1/auth/register' : '/v1/auth/login';
+      const payload = kind === 'register'
+        ? { email, password, full_name: fullName || 'Test User' }
+        : { email, password };
+
+      setStatus(`${kind} request in progress...`);
+      responseEl.textContent = 'Waiting for auth response...';
+
+      try {
+        const res = await fetch(base + endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const raw = await res.text();
+        const data = safeJson(raw);
+
+        if (!res.ok) {
+          responseEl.textContent = JSON.stringify(data, null, 2);
+          setStatus(`Auth failed (${res.status}).`, false);
+          return;
+        }
+
+        const token = data.access_token || '';
+        tokenEl.value = token;
+        localStorage.setItem(STORAGE_KEY, token);
+        responseEl.textContent = JSON.stringify(data, null, 2);
+        setStatus(`Auth success (${kind}).`);
+      } catch (error) {
+        responseEl.textContent = String(error);
+        setStatus(`Network error: ${error}`, false);
+      }
+    }
+
+    async function sendPrompt() {
+      const base = normalizeBaseUrl();
+      const token = tokenEl.value.trim();
+      const prompt = promptEl.value.trim();
+      const projectId = Number(projectIdEl.value);
+      const stream = Boolean(streamEl.checked);
+
+      if (!token) {
+        setStatus('Access token is required. Login/register first.', false);
+        return;
+      }
+      if (!prompt) {
+        setStatus('Prompt is required.', false);
+        return;
+      }
+      if (!projectId || projectId < 1) {
+        setStatus('Valid project_id is required.', false);
+        return;
+      }
+
+      localStorage.setItem(STORAGE_KEY, token);
+      responseEl.textContent = stream ? 'Streaming...\n' : 'Waiting for query response...';
+      setStatus('Sending query...');
+
+      try {
+        const res = await fetch(base + '/v1/query', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            project_id: projectId,
+            query: prompt,
+            stream,
+            top_k: 6,
+          }),
+        });
+
+        if (!res.ok) {
+          const raw = await res.text();
+          responseEl.textContent = JSON.stringify(safeJson(raw), null, 2);
+          setStatus(`Query failed (${res.status}).`, false);
+          return;
+        }
+
+        if (!stream) {
+          const data = await res.json();
+          responseEl.textContent = JSON.stringify(data, null, 2);
+          setStatus('Query completed.');
+          return;
+        }
+
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let done = false;
+
+        while (!done) {
+          const chunk = await reader.read();
+          done = chunk.done;
+          if (chunk.value) {
+            responseEl.textContent += decoder.decode(chunk.value, { stream: !done });
+          }
+        }
+
+        setStatus('Streaming completed.');
+      } catch (error) {
+        responseEl.textContent = String(error);
+        setStatus(`Network error: ${error}`, false);
+      }
+    }
+
+    async function updateProject() {
+      const base = normalizeBaseUrl();
+      const token = tokenEl.value.trim();
+      const projectId = Number(projectIdEl.value);
+
+      if (!token) {
+        setStatus('Access token is required. Login/register first.', false);
+        return;
+      }
+      if (!projectId || projectId < 1) {
+        setStatus('Valid project_id is required.', false);
+        return;
+      }
+
+      const payload = {};
+      const provider = projectProviderEl.value.trim();
+      const name = projectNameEl.value.trim();
+      const modelName = projectModelEl.value.trim();
+      const apiKey = projectApiKeyEl.value.trim();
+      const systemPrompt = projectSystemPromptEl.value.trim();
+
+      if (provider) payload.provider = provider;
+      if (name) payload.name = name;
+      if (modelName) payload.model_name = modelName;
+      if (apiKey) payload.api_key = apiKey;
+      if (systemPrompt) payload.system_prompt = systemPrompt;
+
+      if (Object.keys(payload).length === 0) {
+        setStatus('Provide at least one project field to update.', false);
+        return;
+      }
+
+      responseEl.textContent = 'Updating project...';
+      setStatus('Sending project update...');
+
+      try {
+        const res = await fetch(base + `/v1/projects/${projectId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const raw = await res.text();
+        const data = safeJson(raw);
+
+        if (!res.ok) {
+          responseEl.textContent = JSON.stringify(data, null, 2);
+          setStatus(`Project update failed (${res.status}).`, false);
+          return;
+        }
+
+        responseEl.textContent = JSON.stringify(data, null, 2);
+        setStatus('Project updated successfully.');
+      } catch (error) {
+        responseEl.textContent = String(error);
+        setStatus(`Network error: ${error}`, false);
+      }
+    }
+
+    document.getElementById('registerBtn').addEventListener('click', () => auth('register'));
+    document.getElementById('loginBtn').addEventListener('click', () => auth('login'));
+    document.getElementById('updateProjectBtn').addEventListener('click', updateProject);
+    document.getElementById('sendBtn').addEventListener('click', sendPrompt);
+  </script>
+</body>
+</html>

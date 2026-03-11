@@ -1,0 +1,978 @@
+﻿FLEZEN TERMS OF SERVICE 
+
+Last Updated: February 16, 2026 
+Effective Date: February 20, 2026 
+
+Thank you for using Flezen. These Terms of Service (these "Terms") govern your use of and 
+access to our services, client software, and websites (collectively, the "Services"). Your 
+agreement is with Flezen (the "Company," "we," "us," or "our"). Our Privacy Policy explains how 
+we collect and use your information. By using the Services, you agree to be bound by these Terms 
+and our Privacy Policy. 
+
+ 
+
+1. AGE REQUIREMENTS AND PARENTAL CONSENT 
+
+1.1 Minimum Age Requirement 
+
+You must be at least 16 years of age to use the Services. If you are under 18 years of age or are 
+otherwise defined as a minor according to the laws of your jurisdiction, you must obtain consent 
+from your parent or legal guardian before using the Services. 
+
+1.2 Responsibility for Minors 
+
+If you are a minor (under 18 years of age), you must: 
+
+• Read these Terms under the supervision and guidance of your parent or legal guardian; 
+• Obtain your parent's or legal guardian's consent before providing any personal 
+
+information; and 
+• Only use the Services with ongoing parental supervision. 
+
+Due to the nature of the Internet and user anonymity, it is difficult for us to verify parental consent 
+individually. Therefore, minors are responsible for ensuring they have obtained proper consent 
+before using the Services. 
+
+
+
+1.3 Children Under 13 
+
+We do not knowingly collect or solicit personal information from children under the age of 13, nor 
+do we knowingly allow such children to use our Services. If you are under the age of 13, do not 
+use the Services and do not send us any information about yourself, including your name, 
+address, telephone number, or email address. 
+
+If you believe that your child under 13 has provided information through our Services, please 
+contact us immediately at support@flezen.com, and we will make reasonable efforts to 
+promptly delete such information from our records. 
+
+ 
+
+2. YOUR DATA AND PERMISSIONS 
+
+2.1 User Data 
+
+When you use the Services, you may provide us with materials such as files, content, messages, 
+and contacts (collectively, "User Data"). See our Privacy Policy for additional details. These 
+Terms do not grant the Company any ownership rights to User Data, except for the limited rights 
+necessary to provide the Services. 
+
+2.2 Permissions You Grant Us 
+
+To provide the Services, the Company requires your permission to host, store, back up, access, 
+scan, and process User Data. You hereby grant us this permission, which extends to the 
+Company's affiliates and trusted third-party service providers with whom the Company works to 
+deliver the Services. 
+
+2.3 Data Storage 
+
+User Data is stored on servers located in India and may be processed in other jurisdictions as 
+necessary to provide the Services. By using the Services, you consent to this storage and 
+processing. 
+
+ 
+
+
+
+3. ACCEPTABLE USE POLICY 
+
+You agree not to misuse the Services or assist anyone else in doing so. Without limitation, you 
+must not do, or attempt to do, any of the following in connection with the Services: 
+
+• Probe, scan, or test the vulnerability of any system or network; 
+• Breach or otherwise circumvent any security or authentication measures; 
+• Access, tamper with, or use non-public areas or parts of the Services, or shared areas of 
+
+the Services to which you have not been invited; 
+• Interfere with or disrupt any user, host, or network, including by sending viruses, 
+
+overloading, flooding, spamming, or mail-bombing any part of the Services; 
+• Send altered, deceptive, or false source-identifying information, including "spoofing" or 
+
+"phishing"; 
+• Abuse referrals or promotions to obtain more storage space than legitimately earned, or 
+
+sell storage space received from referrals or promotions; 
+• Circumvent storage space limits through unauthorized means; 
+• Publish or share materials that are unlawfully pornographic, indecent, or that contain 
+
+extreme acts of violence or terrorist activity, including terror propaganda; 
+• Advocate bigotry or hatred against any person or group of people based on their race, 
+
+religion, ethnicity, sex, gender identity, sexual orientation, disability, or impairment; 
+• Violate any applicable law, including storing, publishing, or sharing material that is 
+
+fraudulent, defamatory, or misleading; or 
+• Violate the privacy or infringe the rights of others. 
+
+ 
+
+4. YOUR RESPONSIBILITIES 
+
+4.1 General Responsibilities 
+
+You acknowledge and agree that you use the Services at your own risk and are responsible for all 
+actions and outcomes resulting from your use of the Services, including interactions with other 
+users. Your use of the Services must comply with our Acceptable Use Policy set forth in Section 
+3. 
+
+
+
+4.2 Intellectual Property Compliance 
+
+Content available through the Services may be protected by third-party intellectual property 
+rights. You may not copy, upload, download, or share content unless you have the legal right to do 
+so. You are solely responsible for ensuring you have all necessary rights to any content you 
+upload to the Services. 
+
+4.3 Content Review 
+
+You agree that the Company may review your conduct and content for compliance with these 
+Terms and our Acceptable Use Policy. The Company may remove or refuse to display content 
+that we reasonably believe violates our policies or applicable law. However, the Company does 
+not actively monitor all content and is under no obligation to do so. You should not assume that 
+all content has been reviewed. 
+
+4.4 Account Security 
+
+To protect your User Data, you must: 
+
+• Safeguard your password and account credentials; 
+• Keep your account information current and accurate; 
+• Not share your account credentials with others; and 
+• Not provide others with access to your account. 
+
+You are responsible for all activities that occur under your account. 
+
+4.5 Legal Compliance and Age Confirmation 
+
+You may use the Services only as permitted by applicable law, including export control laws and 
+regulations. By using the Services, you confirm that: 
+
+• You are at least 16 years of age; 
+• If you are under 18 years of age, you have obtained parental or guardian consent to use 
+
+the Services; and 
+• You will comply with all applicable laws in your jurisdiction. 
+
+ 
+
+
+
+5. STORAGE LIMITS AND FEATURES 
+
+5.1 Free Storage 
+
+New accounts receive unlimited free storage space. The Company reserves the right to modify 
+the amount of free storage for new accounts with 30 days' notice. 
+
+5.2 Inactive Accounts 
+
+If your account remains inactive (no login activity) for 180 consecutive days, the Company may 
+reduce your free storage capacity upto 5GB. You will receive email notifications of inactivity 
+before any reduction occurs. 
+
+6. SOFTWARE 
+
+The Services may allow you to download client software ("Software"). The Software may update 
+automatically. Subject to your compliance with these Terms, the Company grants you a limited, 
+non-exclusive, non-transferable, revocable license to use the Software solely for the purpose of 
+accessing the Services. 
+
+To the extent any component of the Software is offered under an open-source license, the 
+Company will make that license available to you, and the provisions of that license may expressly 
+override some of these Terms. Unless prohibited by law, you agree not to reverse engineer or 
+decompile the Services, attempt to do so, or assist anyone in doing so. 
+
+ 
+
+7. ADVERTISEMENTS AND REVENUE SHARING 
+
+7.1 Third-Party Advertisements 
+
+The Services, including desktop and mobile applications, may display third-party advertisements. 
+You understand and agree that Flezen is not responsible for the content, accuracy, or claims 
+made in these advertisements. 
+
+
+
+7.2 Third-Party Products and Services 
+
+Flezen may display advertisements and promotions from third parties via the Services or provide 
+information about or links to third-party products or services. 
+
+7.3 Your Dealings with Third Parties 
+
+Your business dealings, correspondence with, or participation in promotions of third parties, and 
+any terms, conditions, warranties, or representations associated with such dealings or 
+promotions, are solely between you and such third parties. Flezen is not responsible or liable for 
+any loss or damage of any sort incurred as a result of such dealings, promotions, or the presence 
+of third-party advertisements or information accessible via the Services. 
+
+7.4 Content Creator Revenue Program 
+
+7.4.1 Eligibility 
+
+Users who meet the following criteria may be eligible to earn revenue by displaying 
+advertisements on their content ("Content Creators"): 
+
+• Account in good standing; 
+• Minimum of 1,000 total file views; 
+• Compliance with all Terms and Acceptable Use Policy; and 
+• Valid payment information on file. 
+
+Documentation Requirements: Flezen does not collect, require, or request any legal 
+documentation, tax forms, identity documents, or verification documents from Content Creators. 
+Only payment details (such as UPI ID, PayPal email, or cryptocurrency wallet address) are 
+required to participate in the revenue program. 
+
+User Tax Responsibility: By participating in the revenue program, you acknowledge that you are 
+solely responsible for reporting and paying any applicable taxes on your earnings in your 
+jurisdiction. Flezen does not withhold taxes, provide tax advice, or submit tax reports on your 
+behalf. You should consult with a tax professional regarding your tax obligations. 
+
+7.4.2 Revenue Model - CPM Basis 
+
+Revenue is calculated on a Cost Per Mille (CPM) basis, meaning you earn revenue for every 1,000 
+advertisement views on your content. 
+
+
+
+Important Terms: 
+
+• CPM Rates: CPM rates are variable and determined by Flezen based on multiple factors 
+including but not limited to advertiser demand, viewer geographic location, content 
+category, seasonal trends, and market conditions. 
+
+• Rate Changes: CPM rates may change at any time without prior notice. Flezen is not 
+obligated to provide advance notification of rate adjustments. 
+
+• Rate Disclosure: CPM rates may or may not be disclosed to users. Due to the volatile 
+nature of advertising markets and regional variations, Flezen reserves the right to keep 
+specific CPM rates confidential. 
+
+• Regional Variations: CPM rates vary significantly based on the geographic location of 
+viewers. Content viewed in certain regions may generate higher or lower CPM rates than 
+others. 
+
+• No Guaranteed Rates: Flezen makes no guarantee or commitment regarding specific 
+CPM rates, minimum earnings, or rate stability. 
+
+7.4.3 Revenue Calculation 
+
+Your earnings are calculated as follows: 
+
+• Revenue = (Total Advertisement Views ÷ 1,000) × Applicable CPM Rate 
+• Advertisement views are counted only when ads are successfully loaded and displayed to 
+
+viewers 
+• Invalid traffic, bot views, fraudulent clicks, or artificially generated views are excluded 
+
+from revenue calculations 
+• Flezen uses industry-standard fraud detection and may adjust earnings if invalid traffic is 
+
+detected 
+
+7.4.4 Payment Terms 
+
+Minimum Payout Threshold: 
+
+• $10 USD equivalent 
+• Earnings below this threshold will accumulate until the minimum is reached 
+
+Payment Methods: Users may choose from the following payment methods (subject to 
+availability): 
+
+• UPI (Unified Payments Interface): Available for users in India 
+
+
+
+• PayPal: Available in supported countries 
+• Cryptocurrency: If and when made available by Flezen 
+
+Payment Method Terms: 
+
+• You must comply with all terms and conditions of your chosen payment service provider 
+(UPI, PayPal, cryptocurrency platform, etc.) 
+
+• You are responsible for maintaining valid and accurate payment information 
+• Flezen is not responsible for issues arising from payment service provider policies, 
+
+limitations, or failures 
+• Payment methods may be added or removed at Flezen's discretion 
+
+Payment Processing Fees: 
+
+• If any fees are charged by payment processors, banks, or cryptocurrency networks for 
+transferring your revenue, such fees will be deducted from your payment amount 
+
+• These fees may include but are not limited to: transaction fees, currency conversion fees, 
+wire transfer fees, network fees (for cryptocurrency), and intermediary bank charges 
+
+• The net amount you receive will be your earned revenue minus all applicable transaction 
+fees 
+
+• Fee amounts vary by payment method and are determined by third-party service 
+providers 
+
+Payment Schedule and Processing: 
+
+• Payments are NOT processed automatically. You must manually initiate a withdrawal 
+request through your account dashboard 
+
+• You may request a withdrawal at any time once your earnings meet or exceed the 
+minimum payout threshold of ₹100 or $2 USD 
+
+• There is no fixed payment schedule or monthly automatic processing 
+• Once you initiate a withdrawal request, Flezen will process the payment within 24 hours, 
+
+subject to verification and fraud checks 
+• After Flezen processes your payment, it may take up to 72 hours (3 business days) to be 
+
+credited to your account, depending on your chosen payment method and the policies of 
+payment service providers 
+
+• Total time from withdrawal request to receipt: up to 4 business days (1 day's processing + 
+3 days transfer) 
+
+• Delays beyond this timeframe caused by payment service providers, banks, or external 
+factors are not the responsibility of Flezen 
+
+
+
+• You will receive email notification when your withdrawal request has been received and 
+when the payment has been processed 
+
+• Flezen reserves the right to hold, delay, or deny any withdrawal request if suspicious 
+activity is detected or for any reason deemed necessary to protect the integrity of the 
+revenue program (see Section 7.4.7 for details) 
+
+Currency: 
+
+• Payments are made in the currency supported by your chosen payment method 
+• For UPI: Indian Rupees (INR) 
+• For PayPal: USD, EUR, INR, or other currencies as supported by PayPal 
+• For Cryptocurrency: The applicable cryptocurrency (e.g., USDT, BTC, ETH) 
+• Currency conversion rates (if applicable) are determined at the time of payment 
+
+processing 
+
+7.4.5 Prohibited Content for Monetization 
+
+Content is not eligible for revenue sharing if it: 
+
+• Violates the Acceptable Use Policy set forth in Section 3; 
+• Contains copyrighted material for which you do not have rights to monetize; 
+• Is primarily advertising, promotional material, or spam; 
+• Contains misleading, deceptive, or false information; 
+• Violates third-party intellectual property or other rights; 
+• Contains content that violates applicable laws or regulations; 
+• Is deemed by Flezen, in its sole discretion, to be inappropriate for monetization, including 
+
+content that may harm advertiser relationships or brand reputation; or 
+• Generates traffic primarily through artificial means, bots, or incentivized views. 
+
+7.4.6 Fraudulent Activity and Enforcement 
+
+Flezen employs sophisticated fraud detection systems to protect the integrity of the revenue 
+program. The following activities are strictly prohibited: 
+
+Prohibited Activities: 
+
+• Using bots, scripts, or automated tools to generate artificial views 
+• Engaging in click fraud or impression fraud 
+
+
+
+• Encouraging or incentivizing others to repeatedly view content for the purpose of 
+generating revenue 
+
+• Using VPNs, proxies, or other tools to manipulate geographic data 
+• Creating multiple accounts to circumvent program limitations 
+• Engaging in any form of traffic manipulation or invalid activity 
+
+Consequences: If Flezen detects or suspects fraudulent activity: 
+
+• Earnings generated from fraudulent activity will be forfeited 
+• Your account may be immediately suspended or terminated without prior notice 
+• Pending payments may be withheld pending investigation 
+• You may be permanently banned from the revenue program 
+• Flezen reserves the right to take legal action for fraudulent activity 
+
+7.4.7 Suspension or Termination of Revenue Program Participation 
+
+Flezen may suspend or terminate your participation in the revenue program at any time if: 
+
+• You violate these Terms or the Acceptable Use Policy; 
+• Your content becomes ineligible under Section 7.4.5; 
+• We detect fraudulent activity as described in Section 7.4.6; 
+• You fail to maintain minimum eligibility requirements; 
+• Your account is terminated or suspended for any reason; 
+• Your payment information is invalid or payments repeatedly fail; 
+• As required by law, legal process, or our advertising partners; or 
+• At Flezen's sole discretion for protecting the integrity of the revenue program. 
+
+Payment Holds and Withholding: Flezen reserves the right to hold, delay, or withhold any 
+payment or revenue for any of the following reasons: 
+
+• Suspicious activity detected on your account; 
+• Unusual withdrawal patterns or behavior; 
+• Suspected fraud, click fraud, or traffic manipulation; 
+• Investigation of potential Terms violations; 
+• Reports or complaints about your content; 
+• Payment verification requirements; 
+• Legal investigations or requests from authorities; 
+• Risk of chargebacks or payment reversals; 
+
+
+
+• Incomplete or invalid payment information; or 
+• Any reason Flezen deems necessary to protect the integrity of the revenue program or 
+
+investigate potential violations. 
+
+Payment holds may remain in effect indefinitely during investigations. Flezen is under no 
+obligation to release held payments if violations are confirmed or if the investigation cannot be 
+conclusively resolved. You will be notified if payments are held, but Flezen is not required to 
+disclose specific reasons or evidence during active investigations. 
+
+Effect of Suspension or Termination: 
+
+• Upon suspension or termination from the revenue program, you will forfeit the right to 
+earn future revenue 
+
+• Forfeiture of Unpaid Revenue: If your account is terminated for any reason, Flezen is not 
+obligated to pay any remaining revenue balance that has not been withdrawn, regardless 
+of the amount. All unpaid earnings will be forfeited upon account termination. 
+
+• This forfeiture applies to terminations resulting from: violations of these Terms, fraudulent 
+activity, suspicious behavior, policy violations, account closure at Flezen's discretion, or 
+user-initiated account deletion. 
+
+• Amounts may be withheld indefinitely for investigation of potential fraud or policy 
+violations 
+
+7.4.8 No Guarantee of Revenue or Program Availability 
+
+You acknowledge and agree that: 
+
+• Flezen makes no guarantee, representation, or warranty regarding the amount of revenue 
+you will earn 
+
+• Revenue depends on numerous factors outside of Flezen's control, including viewer 
+behavior, advertiser demand, and market conditions 
+
+• The availability of advertisements for your content is not guaranteed 
+• CPM rates fluctuate and may increase or decrease at any time 
+• The revenue program may be modified, suspended, or discontinued at any time 
+• Traffic or views to your content are not guaranteed 
+• Earnings may vary significantly from month to month or may be zero in some periods 
+
+
+
+7.4.9 Changes to Revenue Program Terms 
+
+Flezen reserves the right to modify any aspect of the revenue program at any time, including but 
+not limited to: 
+
+• CPM rates and calculation methods 
+• Eligibility criteria 
+• Minimum payout thresholds 
+• Payment methods and processing times 
+• Revenue share percentages or models 
+• Program rules and policies 
+• Available features and functionality 
+
+Notice of Changes: 
+
+• Changes to CPM rates may be made without notice as specified in Section 7.4.2 
+• For other material changes affecting payment terms or eligibility, Flezen will provide at 
+
+least 15 days' notice via email to active Content Creators 
+• Continued participation in the revenue program after changes take effect constitutes 
+
+acceptance of the modified terms 
+• If you do not agree to modified terms, you must cease participation in the revenue 
+
+program before changes become effective 
+
+7.4.10 Revenue Reporting and Transparency 
+
+• Flezen will provide access to a dashboard or reporting interface where you can view 
+estimated earnings, views, and payment history 
+
+• Reports are provided for informational purposes and may be subject to adjustment 
+• Flezen reserves the right to adjust reported earnings if errors, invalid traffic, or fraudulent 
+
+activity is detected 
+• Final payment amounts may differ from dashboard estimates due to fraud detection, fee 
+
+deductions, or other adjustments 
+• Historical data may be retained for a limited period and is not guaranteed to be 
+
+permanently accessible 
+ 
+
+
+
+8. CONTENT DELETION 
+
+8.1 Deletion by Company 
+
+Flezen reserves the right to delete uploaded content at any time based on: 
+
+• Requests from governmental authorities or law enforcement; 
+• Legal obligations or court orders; 
+• Violations of these Terms or the Acceptable Use Policy; 
+• Copyright infringement claims; or 
+• Other lawful reasons. 
+
+Flezen will make reasonable efforts to notify users if their content is deleted due to such 
+requests, except where legally prohibited, impractical, or where immediate deletion is necessary 
+to prevent harm. 
+
+8.2 Automatic Deletion for Inactivity 
+
+If a file has received zero views for 90 consecutive days, it may be automatically deleted. The 
+Company will send email notifications to the account holder in prior before deletion occurs. 
+
+8.3 User-Initiated Deletion 
+
+You may delete your own content at any time. Once the file is deleted, it gets permanently 
+deleted from the servers.  
+
+ 
+
+ 
+
+9. COMPANY PROPERTY 
+
+The Services are protected by copyright, trademark, and other laws of India and foreign 
+jurisdictions. These Terms do not grant you any right, title, or interest in the Services, third-party 
+content within the Services, or the Company's trademarks, logos, or other brand features. All 
+rights not expressly granted to you are reserved by Flezen. 
+
+ 
+
+
+
+10. COPYRIGHT INFRINGEMENT 
+
+10.1 Company Policy 
+
+The Company respects the intellectual property rights of others and requires our users to do the 
+same. We respond to notices of alleged copyright infringement that comply with applicable law. 
+We reserve the right to delete or disable content alleged to be infringed and to terminate the 
+accounts of repeat infringers. 
+
+10.2 Filing a Copyright Complaint 
+
+If you are a copyright owner, authorized to act on behalf of a copyright owner, or authorized to act 
+under any exclusive right under copyright, please report alleged copyright infringements occurring 
+on or through the Services by submitting a Notice of Alleged Infringement ("Notice") to the 
+Company. 
+
+Your Notice must include: 
+
+(a) Identification of the copyrighted work that you claim has been infringed or, if multiple 
+copyrighted works are covered by this Notice, a representative list of such works; 
+
+(b) Identification of the material or link you claim is infringing (or the subject of infringing activity) 
+and sufficient information to locate such material, including the specific URL; 
+
+(c) Your contact information, including your full name, company affiliation (if applicable), mailing 
+address, telephone number, and email address; 
+
+(d) A statement that you have a good faith belief that use of the material in the manner 
+complained of is not authorized by the copyright owner, its agent, or the law; 
+
+(e) A statement that the information in the Notice is accurate, and under penalty of perjury, that 
+you are authorized to act on behalf of the copyright owner; and 
+
+(f) Your electronic or physical signature. 
+
+Please deliver the Notice to: copyright@flezen.com 
+
+
+
+10.3 Counter-Notice Procedure 
+
+If you believe that content you posted was removed in error or misidentification, you may submit 
+a counter-notice to copyright@flezen.com containing: 
+
+(a) Your contact information (name, address, phone number, and email); 
+
+(b) Identification of the content that was removed and its location before removal; 
+
+(c) A statement under penalty of perjury that you have a good faith belief that the content was 
+removed as a result of mistake or misidentification; 
+
+(d) Your consent to jurisdiction of Indian courts and acceptance of service of process from the 
+original complainant; and 
+
+(e) Your electronic or physical signature. 
+
+Upon receipt of a valid counter-notice, we will forward it to the original complainant and may 
+restore the content within 10-14 business days unless the complainant notifies us of legal action. 
+
+ 
+
+11. TERMINATION 
+
+11.1 Your Right to Terminate 
+
+You may cease using the Services at any time. If you wish to delete your account, you may do so 
+through account settings or by contacting support@flezen.com. 
+
+11.2 Company's Right to Terminate 
+
+The Company reserves the right to suspend or terminate your access to the Services with notice 
+to you if: 
+
+(a) You are in breach of these Terms; 
+
+(b) Your use of the Services would cause a real risk of harm or loss to us or other users; 
+
+(c) Your account has been inactive for more than 365 consecutive days (for free accounts); or 
+
+(d) As required by law or legal process. 
+
+
+
+The Company will provide you with at least 7 days' advance notice via the email address 
+associated with your account to remedy the activity that prompted us to contact you and give you 
+the opportunity to export User Data from the Services. If, after such notice, you fail to take the 
+requested steps, the Company will terminate or suspend your access to the Services. 
+
+11.3 Immediate Termination Without Notice 
+
+No advance notice of termination will be provided where: 
+
+(a) You are in material breach of these Terms, including but not limited to violations of the 
+Acceptable Use Policy; 
+
+(b) Doing so would expose the Company to legal liability or compromise our ability to provide the 
+Services to other users; 
+
+(c) We detect fraudulent activity or security threats; 
+
+(d) The Company is prohibited from providing notice by law or court order; or 
+
+(e) Your account is being used for illegal activities. 
+
+11.4 Effect of Termination 
+
+Upon termination: 
+
+• Your right to access and use the Services will immediately cease; 
+• You will have 30 days to export your User Data before it is permanently deleted; 
+• Amounts owed to the Company become immediately due and payable; and 
+• Sections 9, 12, 13, 14, 15, and 16 of these Terms will survive termination. 
+
+ 
+
+12. CHANGES OR DISCONTINUATION OF SERVICES 
+
+The Company may, in its discretion and when deemed necessary, with or without notice, change 
+all or part of the Services, discontinue providing all or part of the Services or features, or create 
+usage limits for the Services. 
+
+Such changes may include, without limitation: 
+
+• Introduction of new features or removal of existing features; 
+
+
+
+• Modification of storage limits for free or paid accounts; 
+• Changes to pricing for paid plans (if available); 
+• Implementation of new usage restrictions; or 
+• Discontinuation of the Services entirely. 
+
+12.1 Notice for Material Changes 
+
+For changes that materially reduce functionality or storage capacity you have already received, 
+the Company will provide at least 30 days' advance notice via email so that you can export User 
+Data from the Services. 
+
+13. DISCLAIMER OF WARRANTIES 
+
+THE SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE," AND TO THE FULLEST EXTENT 
+PERMITTED BY LAW, THE COMPANY AND ITS AFFILIATES, SUPPLIERS, AND DISTRIBUTORS 
+MAKE NO WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION: 
+
+• ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
+PURPOSE, OR NON-INFRINGEMENT; 
+
+• THAT THE SERVICES WILL BE UNINTERRUPTED, ERROR-FREE, OR SECURE; 
+• THAT DEFECTS WILL BE CORRECTED; 
+• THAT THE SERVICES OR SERVERS ARE FREE OF VIRUSES OR HARMFUL 
+
+COMPONENTS; OR 
+• THAT USER DATA WILL NOT BE LOST OR CORRUPTED. 
+
+YOU USE THE SERVICES AT YOUR OWN RISK. THE COMPANY RECOMMENDS THAT YOU 
+MAINTAIN YOUR OWN BACKUPS OF IMPORTANT DATA. 
+
+ 
+
+14. LIMITATION OF LIABILITY 
+
+TO THE FULLEST EXTENT PERMITTED BY LAW: 
+
+
+
+14.1 General Limitation 
+
+EXCEPT WHERE YOUR LOSSES AND DAMAGES ARE ATTRIBUTED TO THE COMPANY'S 
+WILLFUL INTENT OR GROSS NEGLIGENCE, THE COMPANY SHALL NOT BE RESPONSIBLE FOR 
+ANY LOSSES OR DAMAGES DERIVED FROM YOUR USE OF THE SERVICES. 
+
+14.2 Consumer Contract Protection 
+
+IF OUR CONTRACT WITH YOU IN CONNECTION WITH YOUR USE OF THE SERVICES IS 
+CONSIDERED A "CONSUMER CONTRACT" UNDER THE CONSUMER PROTECTION ACT, 2019 
+OR SIMILAR CONSUMER PROTECTION LAWS, THEN EXCEPT WHERE YOUR LOSSES AND 
+DAMAGES ARE ATTRIBUTED TO THE COMPANY'S WILLFUL INTENT OR GROSS NEGLIGENCE, 
+THE COMPANY SHALL BE RESPONSIBLE TO YOU ONLY FOR DIRECT FORESEEABLE LOSSES 
+AND DAMAGES IN NORMAL CIRCUMSTANCES, CAPPED AT THE LESSER OF: 
+
+• THE FEES THE COMPANY RECEIVED FROM YOU IN THE 12 MONTHS PRECEDING THE 
+EVENT GIVING RISE TO LIABILITY; OR 
+
+• ₹10,000 (TEN THOUSAND INDIAN RUPEES). 
+
+14.3 Excluded Damages 
+
+NEITHER THE COMPANY NOR ITS AFFILIATES, SUPPLIERS, OR DISTRIBUTORS SHALL BE 
+LIABLE FOR: 
+
+(a) ANY INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, EXEMPLARY, OR CONSEQUENTIAL 
+DAMAGES; 
+
+(b) ANY LOSS OF USE, DATA, BUSINESS, REVENUE, OR PROFITS, REGARDLESS OF LEGAL 
+THEORY; 
+
+(c) ANY DAMAGES RESULTING FROM UNAUTHORIZED ACCESS TO OR ALTERATION OF YOUR 
+TRANSMISSIONS OR DATA; 
+
+(d) ANY DAMAGES RESULTING FROM THIRD-PARTY CONDUCT OR CONTENT ON THE 
+SERVICES; OR 
+
+(e) ANY DAMAGES RESULTING FROM DELETION OF, CORRUPTION OF, OR FAILURE TO STORE 
+USER DATA. 
+
+
+
+14.4 Basis of the Bargain 
+
+THE LIMITATIONS IN THIS SECTION APPLY EVEN IF THE COMPANY HAS BEEN ADVISED OF 
+THE POSSIBILITY OF SUCH DAMAGES AND REFLECT A REASONABLE ALLOCATION OF RISK 
+BETWEEN THE PARTIES. THESE LIMITATIONS WILL APPLY TO THE FULLEST EXTENT 
+PERMITTED BY LAW AND WILL SURVIVE ANY TERMINATION OR EXPIRATION OF THESE 
+TERMS. 
+
+ 
+
+15. INDEMNIFICATION 
+
+You agree to indemnify, defend, and hold harmless Flezen, its affiliates, officers, directors, 
+employees, agents, and licensors from and against any and all claims, liabilities, damages, 
+losses, costs, expenses, or fees (including reasonable attorneys' fees) arising from: 
+
+(a) Your use or misuse of the Services; 
+
+(b) Your violation of these Terms; 
+
+(c) Your violation of any rights of another party, including any users; 
+
+(d) Your User Data or any content you upload or share through the Services; 
+
+(e) Your violation of any applicable laws or regulations; or 
+
+(f) Any fraudulent or illegal activity. 
+
+This indemnification obligation will survive the termination of these Terms and your use of the 
+Services. 
+
+ 
+
+16. DISPUTE RESOLUTION 
+
+16.1 Informal Resolution 
+
+Before filing a claim against the Company, you agree to attempt to resolve the dispute informally 
+by contacting support@flezen.com with a detailed description of the dispute. The Company will 
+endeavor to resolve the dispute informally by contacting you via email within 5 business days. If a 
+
+
+
+dispute is not resolved within 30 days of your initial contact, you or the Company may initiate 
+formal proceedings. 
+
+16.2 Jurisdiction and Venue 
+
+You and the Company agree that any judicial proceeding to resolve claims relating to these Terms 
+or the Services will be brought exclusively in the courts located in India. Both you and the 
+Company consent to exclusive venue and personal jurisdiction in such courts. 
+
+If you reside in a jurisdiction with laws that give consumers the right to bring disputes in their local 
+courts, this paragraph shall not affect those mandatory consumer rights. 
+
+16.3 Time Limitation 
+
+You agree that regardless of any statute or law to the contrary, any claim or cause of action 
+arising out of or related to use of the Services, or these Terms must be filed within one (1) year 
+after such claim or cause of action arose or be forever barred. 
+
+ 
+
+17. GOVERNING LAW 
+
+These Terms will be governed by and construed in accordance with the laws of India, without 
+regard to its conflicts of law principles. The United Nations Convention on Contracts for the 
+International Sale of Goods shall not apply. 
+
+ 
+
+18. ENTIRE AGREEMENT 
+
+These Terms, together with our Privacy Policy and any other policies listed, constitute the entire 
+agreement between you and the Company with respect to the subject matter herein and 
+supersede all prior or contemporaneous agreements, terms, and conditions applicable to the 
+subject matter. 
+
+Except as expressly set forth herein, these Terms create no third-party beneficiary rights. 
+
+ 
+
+
+
+19. WAIVER, SEVERABILITY, AND ASSIGNMENT 
+
+19.1 Waiver 
+
+The Company's failure to enforce any provision of these Terms shall not constitute a waiver of its 
+right to do so in the future. No waiver of any term of these Terms shall be deemed a further or 
+continuing waiver of such term or any other term. 
+
+19.2 Severability 
+
+If any provision of these Terms is found to be unenforceable or invalid by a court of competent 
+jurisdiction, the remaining provisions will remain in full effect, and an enforceable term will be 
+substituted that reflects our intent as closely as possible. 
+
+19.3 Assignment 
+
+You may not assign, transfer, or delegate any of your rights or obligations under these Terms 
+without the Company's prior written consent, and any such attempt will be void. The Company 
+may assign its rights and obligations under these Terms to any of its affiliates or subsidiaries, or to 
+any successor in interest of any business associated with the Services, without your consent. 
+
+ 
+
+20. MODIFICATIONS TO THESE TERMS 
+
+The Company may revise these Terms from time to time to: 
+
+(a) Reflect changes to applicable law or regulatory requirements; 
+
+(b) Reflect new regulatory requirements or legal obligations; 
+
+(c) Reflect improvements, enhancements, or changes made to the Services; 
+
+(d) Address security, fraud, or technical issues; 
+
+(e) Conform to the general interest of users; or 
+
+(f) Make amendments that do not contradict the purpose of these Terms and are reasonable 
+considering the circumstances, necessity, and appropriateness of the amendment. 
+
+
+
+20.1 Notice of Changes 
+
+The Company will notify you at least 30 days in advance of any update that materially affects your 
+use of the Services or your legal rights as a user. Notice can be provided via: 
+
+• Email to the address associated with your account; 
+• Prominent notice on the Flezen website or application; or 
+• In-app notification upon your next login. 
+
+20.2 Effective Date of Changes 
+
+Updated Terms shall become effective no less than 30 days from the date of notification for 
+material changes, and immediately for non-material changes such as clarifications or 
+corrections. 
+
+20.3 Acceptance of Changes 
+
+If you do not agree to the updated Terms, you must cease using the Services before the updates 
+become effective. By continuing to use or access the Services after the updates come into effect, 
+you agree to be bound by the revised Terms. 
+
+ 
+
+21. FORCE MAJEURE 
+
+The Company shall not be liable for any failure or delay in performing its obligations under these 
+Terms due to events beyond its reasonable control, including but not limited to: 
+
+• Acts of God (earthquakes, floods, fires, storms, etc.); 
+• War, terrorism, riots, or civil unrest; 
+• Pandemics or epidemics; 
+• Government actions, laws, or regulations; 
+• Labor disputes or strikes; 
+• Internet or telecommunications failures not caused by the Company; 
+• Hacking, cyber-attacks, or denial of service attacks; or 
+• Failures of third-party services or suppliers. 
+
+
+
+During any such event, the Company's obligations will be suspended for the duration of the force 
+majeure event. The Company will make reasonable efforts to mitigate the effects and resume 
+normal operations as soon as practicable. 
+
+ 
+
+22. CONTACT INFORMATION 
+
+If you have any questions, concerns, or complaints about these Terms or the Services, please 
+contact us at: 
+
+General Inquiries: 
+Email: support@flezen.com 
+
+Copyright Issues: 
+Email: copyright@flezen.com 
+
+Revenue Program Questions: 
+Email: support@flezen.com (Subject: Revenue Program) 
+
+ 
+
+ 
+
+23. ACKNOWLEDGMENT AND ACCEPTANCE 
+
+By creating an account, accessing, or using the Flezen website, mobile application, or any of our 
+Services, you acknowledge that: 
+
+• You have read and understood these Terms of Service in their entirety; 
+• You agree to be bound by these Terms and our Privacy Policy; 
+• You meet the age requirements set forth in Section 1; 
+• If you are a minor, you have obtained parental or guardian consent; 
+• You will comply with all applicable laws and regulations; and 
+• You understand that violation of these Terms may result in termination of your account 
+
+and loss of access to the Services. 
+
+If you do not agree with these Terms, you must not use the Services. 
+
+ 
+
+
+
+Last Updated: February 1, 2026 
+Version: 1.0 
+
+© 2026 Flezen. All rights reserved.

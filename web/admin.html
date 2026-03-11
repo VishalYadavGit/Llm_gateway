@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - LLM Gateway</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="topbar">
+        <div class="brand">LLM Gateway Admin</div>
+        <a href="/" class="nav-link">Back to Landing</a>
+      </header>
+
+      <section class="row">
+        <article class="card span-6">
+          <h2>Register</h2>
+          <form id="registerForm">
+            <label for="registerEmail">Email</label>
+            <input id="registerEmail" type="email" required />
+
+            <label for="registerFullName">Full Name</label>
+            <input id="registerFullName" type="text" minlength="2" required />
+
+            <label for="registerPassword">Password</label>
+            <input id="registerPassword" type="password" minlength="8" required />
+
+            <button type="submit" class="secondary">Register</button>
+            <p id="registerOutput" class="output"></p>
+          </form>
+        </article>
+
+        <article class="card span-6">
+          <h2>Login</h2>
+          <form id="loginForm">
+            <label for="email">Email</label>
+            <input id="email" type="email" required />
+
+            <label for="password">Password</label>
+            <input id="password" type="password" required />
+
+            <button type="submit">Login</button>
+            <p id="loginOutput" class="output"></p>
+          </form>
+          <p class="note">Login stores your token in browser storage for quick reuse.</p>
+        </article>
+
+        <article class="card span-12">
+          <h2>Your Projects</h2>
+          <button class="secondary" id="refreshProjects" type="button">Refresh Projects</button>
+          <p id="projectsOutput" class="output"></p>
+          <ul id="projectList" class="list"></ul>
+        </article>
+      </section>
+
+      <section id="adminForms" class="row hidden" style="margin-top:16px">
+        <article class="card span-6">
+          <h2>Create Project</h2>
+          <form id="projectForm">
+            <label for="siteDomain">Site Domain</label>
+            <input id="siteDomain" placeholder="example.com" required />
+
+            <label for="provider">Provider</label>
+            <select id="provider" required>
+              <option value="openai">OpenAI</option>
+              <option value="gemini">Gemini</option>
+              <option value="claude">Claude</option>
+            </select>
+
+            <label for="modelName">Model</label>
+            <input id="modelName" placeholder="gpt-4.1-mini / gemini-1.5-pro" />
+
+            <label for="providerApiKey">Provider API Key</label>
+            <input id="providerApiKey" placeholder="sk-..." required />
+
+            <label for="systemPrompt">System Prompt</label>
+            <textarea id="systemPrompt">You are a helpful assistant.</textarea>
+
+            <button type="submit">Create Project</button>
+            <p id="projectOutput" class="output"></p>
+          </form>
+        </article>
+
+        <article class="card span-6">
+          <h2>Upload File</h2>
+          <form id="uploadForm">
+            <label for="projectSelect">Project</label>
+            <select id="projectSelect" required></select>
+
+            <label for="file">Document File (PDF or TXT)</label>
+            <input id="file" type="file" accept="application/pdf,.pdf,text/plain,.txt" required />
+
+            <button type="submit">Upload</button>
+            <p id="uploadOutput" class="output"></p>
+          </form>
+        </article>
+
+        <article class="card span-12">
+          <h2>Edit Project</h2>
+          <form id="editProjectForm">
+            <label for="editProjectSelect">Project</label>
+            <select id="editProjectSelect" required></select>
+
+            <label for="editSiteDomain">Site Domain (Project Name)</label>
+            <input id="editSiteDomain" placeholder="example.com" />
+
+            <label for="editProvider">Provider</label>
+            <select id="editProvider">
+              <option value="">Keep existing</option>
+              <option value="openai">OpenAI</option>
+              <option value="gemini">Gemini</option>
+              <option value="claude">Claude</option>
+            </select>
+
+            <label for="editModelName">Model</label>
+            <input id="editModelName" placeholder="Leave empty to keep existing" />
+
+            <label for="editProviderApiKey">Provider API Key</label>
+            <input id="editProviderApiKey" placeholder="Leave empty to keep existing" />
+
+            <label for="editSystemPrompt">System Prompt</label>
+            <textarea id="editSystemPrompt" placeholder="Leave empty to keep existing"></textarea>
+
+            <button type="submit" class="secondary">Update Project</button>
+            <p id="editProjectOutput" class="output"></p>
+          </form>
+        </article>
+      </section>
+    </div>
+
+    <script>
+      const registerForm = document.getElementById("registerForm");
+      const loginForm = document.getElementById("loginForm");
+      const projectForm = document.getElementById("projectForm");
+      const uploadForm = document.getElementById("uploadForm");
+      const refreshProjectsButton = document.getElementById("refreshProjects");
+      const projectList = document.getElementById("projectList");
+      const projectSelect = document.getElementById("projectSelect");
+      const editProjectForm = document.getElementById("editProjectForm");
+      const editProjectSelect = document.getElementById("editProjectSelect");
+      const adminForms = document.getElementById("adminForms");
+
+      const registerOutput = document.getElementById("registerOutput");
+      const loginOutput = document.getElementById("loginOutput");
+      const projectsOutput = document.getElementById("projectsOutput");
+      const projectOutput = document.getElementById("projectOutput");
+      const uploadOutput = document.getElementById("uploadOutput");
+      const editProjectOutput = document.getElementById("editProjectOutput");
+      const editSiteDomain = document.getElementById("editSiteDomain");
+      const editProvider = document.getElementById("editProvider");
+      const editModelName = document.getElementById("editModelName");
+      const editProviderApiKey = document.getElementById("editProviderApiKey");
+      const editSystemPrompt = document.getElementById("editSystemPrompt");
+
+      let currentProjects = [];
+      async function register(email, fullName, password) {
+        const response = await fetch("/v1/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            full_name: fullName,
+            password,
+          }),
+        });
+
+        if (!response.ok) {
+          const detail = await response.text();
+          throw new Error(detail || "Registration failed");
+        }
+
+        return response.json();
+      }
+
+
+      let token = localStorage.getItem("gateway_token") || "";
+
+      const authHeaders = () => ({
+        Authorization: `Bearer ${token}`,
+      });
+
+      const setOutput = (node, text, isError = false) => {
+        node.textContent = text;
+        node.style.color = isError ? "#a03131" : "#4d5462";
+      };
+
+      async function login(email, password) {
+        const response = await fetch("/v1/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
+
+        if (!response.ok) {
+          const detail = await response.text();
+          throw new Error(detail || "Login failed");
+        }
+
+        return response.json();
+      }
+
+      async function fetchProjects() {
+        const response = await fetch("/v1/projects", {
+          headers: authHeaders(),
+        });
+
+        if (!response.ok) {
+          const detail = await response.text();
+          throw new Error(detail || "Failed to load projects");
+        }
+
+        return response.json();
+      }
+
+      function renderProjects(projects) {
+        currentProjects = projects;
+        projectList.innerHTML = "";
+        projectSelect.innerHTML = "";
+        editProjectSelect.innerHTML = "";
+
+        projects.forEach((project) => {
+          const li = document.createElement("li");
+          li.textContent = `${project.name} (${project.provider}${project.model_name ? ": " + project.model_name : ""})`;
+          projectList.appendChild(li);
+
+          const option = document.createElement("option");
+          option.value = String(project.id);
+          option.textContent = `${project.name} [#${project.id}]`;
+          projectSelect.appendChild(option);
+
+          const editOption = document.createElement("option");
+          editOption.value = String(project.id);
+          editOption.textContent = `${project.name} [#${project.id}]`;
+          editProjectSelect.appendChild(editOption);
+        });
+
+        if (projects.length > 0) {
+          fillEditForm(projects[0].id);
+        }
+      }
+
+      function fillEditForm(projectId) {
+        const project = currentProjects.find((item) => item.id === Number(projectId));
+        if (!project) {
+          return;
+        }
+
+        editSiteDomain.value = project.name || "";
+        editProvider.value = project.provider || "";
+        editModelName.value = project.model_name || "";
+        editProviderApiKey.value = "";
+        editSystemPrompt.value = project.system_prompt || "";
+      }
+
+      async function refreshProjects() {
+        try {
+          if (!token) {
+            setOutput(projectsOutput, "Login first.", true);
+            return;
+          }
+          const projects = await fetchProjects();
+          renderProjects(projects);
+          setOutput(projectsOutput, `Loaded ${projects.length} project(s).`);
+        } catch (error) {
+          setOutput(projectsOutput, error.message, true);
+        }
+      }
+
+      registerForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const email = document.getElementById("registerEmail").value;
+        const fullName = document.getElementById("registerFullName").value;
+        const password = document.getElementById("registerPassword").value;
+
+        try {
+          const data = await register(email, fullName, password);
+          token = data.access_token;
+          localStorage.setItem("gateway_token", token);
+          adminForms.classList.remove("hidden");
+          setOutput(registerOutput, "Registration successful. You are now logged in.");
+          setOutput(loginOutput, "Authenticated via registration.");
+          registerForm.reset();
+          await refreshProjects();
+        } catch (error) {
+          setOutput(registerOutput, error.message, true);
+        }
+      });
+
+      loginForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        try {
+          const data = await login(email, password);
+          token = data.access_token;
+          localStorage.setItem("gateway_token", token);
+          adminForms.classList.remove("hidden");
+          setOutput(loginOutput, "Login successful.");
+          await refreshProjects();
+        } catch (error) {
+          setOutput(loginOutput, error.message, true);
+        }
+      });
+
+      projectForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const siteDomain = document.getElementById("siteDomain").value.trim();
+        const provider = document.getElementById("provider").value;
+        const modelName = document.getElementById("modelName").value.trim();
+        const providerApiKey = document.getElementById("providerApiKey").value.trim();
+        const systemPrompt = document.getElementById("systemPrompt").value.trim();
+
+        const payload = {
+          name: siteDomain,
+          provider,
+          api_key: providerApiKey,
+          model_name: modelName || null,
+          system_prompt: `${systemPrompt}\n\nPrimary site domain: ${siteDomain}`,
+        };
+
+        try {
+          const response = await fetch("/v1/projects", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              ...authHeaders(),
+            },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            const detail = await response.text();
+            throw new Error(detail || "Project creation failed");
+          }
+
+          const created = await response.json();
+          setOutput(projectOutput, `Created project #${created.id}.`);
+          projectForm.reset();
+          await refreshProjects();
+        } catch (error) {
+          setOutput(projectOutput, error.message, true);
+        }
+      });
+
+      uploadForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const fileInput = document.getElementById("file");
+        const file = fileInput.files[0];
+        const projectId = projectSelect.value;
+
+        if (!file) {
+          setOutput(uploadOutput, "Select a PDF or TXT file first.", true);
+          return;
+        }
+
+        const body = new FormData();
+        body.append("project_id", projectId);
+        body.append("file", file);
+
+        try {
+          const response = await fetch("/v1/documents/upload", {
+            method: "POST",
+            headers: authHeaders(),
+            body,
+          });
+
+          if (!response.ok) {
+            const detail = await response.text();
+            throw new Error(detail || "Upload failed");
+          }
+
+          const uploaded = await response.json();
+          setOutput(uploadOutput, `Uploaded ${uploaded.file_name} (id: ${uploaded.id}).`);
+          uploadForm.reset();
+        } catch (error) {
+          setOutput(uploadOutput, error.message, true);
+        }
+      });
+
+      editProjectSelect.addEventListener("change", (event) => {
+        fillEditForm(event.target.value);
+      });
+
+      editProjectForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const projectId = editProjectSelect.value;
+        if (!projectId) {
+          setOutput(editProjectOutput, "Select a project first.", true);
+          return;
+        }
+
+        const siteDomain = editSiteDomain.value.trim();
+        const provider = editProvider.value;
+        const modelName = editModelName.value.trim();
+        const providerApiKey = editProviderApiKey.value.trim();
+        const systemPrompt = editSystemPrompt.value.trim();
+
+        const payload = {};
+        if (siteDomain) payload.name = siteDomain;
+        if (provider) payload.provider = provider;
+        if (modelName) payload.model_name = modelName;
+        if (providerApiKey) payload.api_key = providerApiKey;
+        if (systemPrompt) payload.system_prompt = systemPrompt;
+
+        if (Object.keys(payload).length === 0) {
+          setOutput(editProjectOutput, "Set at least one field to update.", true);
+          return;
+        }
+
+        try {
+          const response = await fetch(`/v1/projects/${projectId}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              ...authHeaders(),
+            },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            const detail = await response.text();
+            throw new Error(detail || "Project update failed");
+          }
+
+          const updated = await response.json();
+          setOutput(editProjectOutput, `Updated project #${updated.id}.`);
+          editProviderApiKey.value = "";
+          await refreshProjects();
+          editProjectSelect.value = String(updated.id);
+          fillEditForm(updated.id);
+        } catch (error) {
+          setOutput(editProjectOutput, error.message, true);
+        }
+      });
+
+      refreshProjectsButton.addEventListener("click", refreshProjects);
+
+      if (token) {
+        adminForms.classList.remove("hidden");
+        setOutput(loginOutput, "Token loaded from browser storage.");
+        refreshProjects();
+      }
+    </script>
+  </body>
+</html>
