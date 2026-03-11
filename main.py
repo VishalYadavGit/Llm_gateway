@@ -1,3 +1,7 @@
+import os
+import signal
+import subprocess
+import sys
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -58,7 +62,42 @@ async def admin_page() -> FileResponse:
 async def health() -> dict[str, str]:
     return {"status": "ok", "service": settings.app_name}
 
+
+def _resolve_dramatiq_command() -> list[str]:
+    scripts_dir = Path(sys.executable).resolve().parent
+    dramatiq_binary = scripts_dir / "dramatiq"
+    if dramatiq_binary.exists():
+        return [str(dramatiq_binary), "workers.worker_entrypoint"]
+    return [sys.executable, "-m", "dramatiq", "workers.worker_entrypoint"]
+
+
+def _stop_worker_process(process: subprocess.Popen[str] | None) -> None:
+    if process is None or process.poll() is not None:
+        return
+
+    # Graceful first: let Dramatiq stop its own worker subprocesses.
+    process.send_signal(signal.SIGINT)
+    try:
+        process.wait(timeout=10)
+    except subprocess.TimeoutExpired:
+        process.terminate()
+        try:
+            process.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            process.wait(timeout=5)
+
+
+def _start_worker_process() -> subprocess.Popen[str]:
+    command = _resolve_dramatiq_command()
+    return subprocess.Popen(command, cwd=BASE_DIR, env=os.environ.copy())
+
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    worker_process = _start_worker_process()
+
+    try:
+        uvicorn.run(app, host=settings.app_host, port=settings.app_port)
+    finally:
+        _stop_worker_process(worker_process)

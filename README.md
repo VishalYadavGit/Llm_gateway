@@ -47,6 +47,12 @@ cp .env.example .env
 docker compose up --build
 ```
 
+For local development without Docker, run the API and background worker together with one command:
+
+```bash
+python main.py
+```
+
 3. Open API docs:
 - http://localhost:8000/docs
 
