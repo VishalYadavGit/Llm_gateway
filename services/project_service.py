@@ -7,14 +7,18 @@ from models.api_key import APIKey
 from models.project import Project
 from models.user import User
 from schemas.project import ProjectCreateRequest, ProjectUpdateRequest
+from utils.origin import normalize_allowed_origin
 
 
 class ProjectService:
     @staticmethod
     async def create_project(db: AsyncSession, user: User, payload: ProjectCreateRequest) -> Project:
+        allowed_origin = payload.allowed_origin or normalize_allowed_origin(payload.name)
+
         project = Project(
             user_id=user.id,
             name=payload.name,
+            allowed_origin=allowed_origin,
             provider=payload.provider,
             system_prompt=payload.system_prompt,
             model_name=payload.model_name,
@@ -54,6 +58,11 @@ class ProjectService:
         return decrypt_api_key(item.encrypted_key).strip()
 
     @staticmethod
+    async def is_origin_allowed(db: AsyncSession, origin: str) -> bool:
+        result = await db.execute(select(Project.id).where(Project.allowed_origin == origin).limit(1))
+        return result.scalar_one_or_none() is not None
+
+    @staticmethod
     async def update_project(
         db: AsyncSession,
         user: User,
@@ -68,6 +77,8 @@ class ProjectService:
 
         if "name" in updates and payload.name is not None:
             project.name = payload.name
+        if "allowed_origin" in updates:
+            project.allowed_origin = payload.allowed_origin
         if "provider" in updates and payload.provider is not None:
             project.provider = payload.provider
         if "system_prompt" in updates and payload.system_prompt is not None:

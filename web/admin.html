@@ -74,7 +74,7 @@
           <h2>Create Project</h2>
           <form id="projectForm">
             <label for="siteDomain">Site Domain</label>
-            <input id="siteDomain" placeholder="example.com" required />
+            <input id="siteDomain" placeholder="https://example.com" required />
 
             <label for="provider">Provider</label>
             <select id="provider" required>
@@ -117,8 +117,8 @@
             <label for="editProjectSelect">Project</label>
             <select id="editProjectSelect" required></select>
 
-            <label for="editSiteDomain">Site Domain (Project Name)</label>
-            <input id="editSiteDomain" placeholder="example.com" />
+            <label for="editSiteDomain">Site Domain</label>
+            <input id="editSiteDomain" placeholder="https://example.com" />
 
             <label for="editProvider">Provider</label>
             <select id="editProvider">
@@ -245,7 +245,7 @@
 
         projects.forEach((project) => {
           const li = document.createElement("li");
-          li.textContent = `${project.name} (${project.provider}${project.model_name ? ": " + project.model_name : ""})`;
+          li.textContent = `${project.name} -> ${project.allowed_origin || "origin not set"} (${project.provider}${project.model_name ? ": " + project.model_name : ""})`;
           projectList.appendChild(li);
 
           const option = document.createElement("option");
@@ -270,7 +270,7 @@
           return;
         }
 
-        editSiteDomain.value = project.name || "";
+        editSiteDomain.value = project.allowed_origin || project.name || "";
         editProvider.value = project.provider || "";
         editModelName.value = project.model_name || "";
         editProviderApiKey.value = "";
@@ -340,6 +340,7 @@
 
         const payload = {
           name: siteDomain,
+          allowed_origin: siteDomain,
           provider,
           api_key: providerApiKey,
           model_name: modelName || null,
@@ -426,7 +427,10 @@
         const systemPrompt = editSystemPrompt.value.trim();
 
         const payload = {};
-        if (siteDomain) payload.name = siteDomain;
+        if (siteDomain) {
+          payload.name = siteDomain;
+          payload.allowed_origin = siteDomain;
+        }
         if (provider) payload.provider = provider;
         if (modelName) payload.model_name = modelName;
         if (providerApiKey) payload.api_key = providerApiKey;

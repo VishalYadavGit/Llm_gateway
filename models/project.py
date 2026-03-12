@@ -11,6 +11,7 @@ class Project(Base, TimestampMixin):
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     name: Mapped[str] = mapped_column(String(255), index=True)
+    allowed_origin: Mapped[str | None] = mapped_column(String(255), nullable=True, index=True)
     provider: Mapped[str] = mapped_column(String(50), index=True)
     system_prompt: Mapped[str] = mapped_column(Text, default="You are a helpful assistant.")
     model_name: Mapped[str | None] = mapped_column(String(100), nullable=True)
