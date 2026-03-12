@@ -24,7 +24,7 @@
         <div class="container-wide">
           <div class="hero-content">
             <h1>Fast AI integration for your product</h1>
-            <p class="hero-subtitle">Create an account, generate access tokens, call a single API, and return customized AI responses directly inside your site or app.</p>
+            <p class="hero-subtitle">Set up your project once, register your domain, and let your site fetch short-lived access tokens automatically on each refresh.</p>
             <div class="hero-cta">
               <a href="/admin" class="btn-primary">Launch Admin Panel</a>
               <a href="/docs" class="btn-secondary">View API Documentation</a>
@@ -48,7 +48,7 @@
             </div>
             <div class="problem-item">
               <h3>Secure by default</h3>
-              <p>Use project-level credentials and access tokens to control who can send requests and retrieve responses.</p>
+              <p>Only registered origins can fetch query tokens, so requests are scoped to your configured domain automatically.</p>
             </div>
           </div>
         </div>
@@ -100,23 +100,23 @@
           <div class="steps-grid">
             <div class="step">
               <div class="step-number">1</div>
-              <h3>Create your account</h3>
-              <p>Sign in to the admin panel and create a project for your website or application.</p>
+              <h3>Create account and project</h3>
+              <p>Register/login in admin, create a project, and save your website domain as the allowed origin.</p>
             </div>
             <div class="step">
               <div class="step-number">2</div>
-              <h3>Generate API credentials</h3>
-              <p>Create project API keys and access tokens to authenticate requests safely from your backend.</p>
+              <h3>Upload documents</h3>
+              <p>Attach project documents so queries can be grounded in your own content.</p>
             </div>
             <div class="step">
               <div class="step-number">3</div>
-              <h3>Post prompts to the API</h3>
-              <p>Send a request with your token to the query endpoint and choose provider and model behavior per project.</p>
+              <h3>Fetch token from your site</h3>
+              <p>On page refresh, your site calls <code>GET /v1/auth/token</code>; API validates the browser <code>Origin</code> and returns a short-lived token.</p>
             </div>
             <div class="step">
               <div class="step-number">4</div>
-              <h3>Fetch customized responses</h3>
-              <p>Return tailored AI output to your frontend in real time, with optional document grounding for higher accuracy.</p>
+              <h3>Send query and render response</h3>
+              <p>Use the token in <code>Authorization: Bearer ...</code> for <code>POST /v1/query</code>, then render the returned answer in your chat UI.</p>
             </div>
           </div>
         </div>

@@ -5,8 +5,8 @@ from fastapi.responses import StreamingResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.db import get_db
-from core.dependencies import get_current_user
-from models.user import User
+from core.dependencies import get_current_project
+from models.project import Project
 from schemas.query import QueryRequest, QueryResponse
 from services.query_service import QueryService
 
@@ -19,13 +19,12 @@ query_service = QueryService()
 async def query(
     payload: QueryRequest,
     db: AsyncSession = Depends(get_db),
-    user: User = Depends(get_current_user),
+    project: Project = Depends(get_current_project),
 ):
     if payload.stream:
         stream, context_chunks = await query_service.stream_query(
             db=db,
-            user=user,
-            project_id=payload.project_id,
+            project=project,
             user_query=payload.query,
             top_k=payload.top_k,
         )
@@ -39,8 +38,7 @@ async def query(
 
     answer, chunks = await query_service.query(
         db=db,
-        user=user,
-        project_id=payload.project_id,
+        project=project,
         user_query=payload.query,
         top_k=payload.top_k,
     )

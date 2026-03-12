@@ -58,12 +58,23 @@ python main.py
 
 ## Main Endpoints
 
-- `POST /v1/auth/token` — Request access token by origin
+- `GET /v1/auth/token` — Request access token by origin (read from `Origin` header)
+- `POST /v1/auth/register` — Admin account registration
+- `POST /v1/auth/login` — Admin login
 - `POST /v1/projects`
 - `GET /v1/projects`
 - `POST /v1/documents/upload` (multipart: `project_id`, `file`)
 - `GET /v1/documents/{project_id}`
 - `POST /v1/query`
+
+## Integration Flow
+
+1. Admin user creates an account and logs into the admin panel.
+2. Admin creates a project, sets `allowed_origin`, and uploads documents.
+3. End-user website calls `GET /v1/auth/token` on each page load.
+4. API validates request `Origin` against `allowed_origin` and returns a short-lived token.
+5. Website sends `POST /v1/query` with `Authorization: Bearer <token>` and query payload.
+6. API resolves project from token and returns the model response.
 
 ## Streaming Query
 

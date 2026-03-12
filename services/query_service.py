@@ -4,8 +4,8 @@ from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.config import get_settings
+from models.project import Project
 from models.request_log import RequestLog
-from models.user import User
 from providers.factory import get_adapter
 from services.project_service import ProjectService
 from services.rag_service import RAGService
@@ -57,12 +57,10 @@ class QueryService:
     async def query(
         self,
         db: AsyncSession,
-        user: User,
-        project_id: int,
+        project: Project,
         user_query: str,
         top_k: int,
     ) -> tuple[str, list[str]]:
-        project = await ProjectService.get_project_or_404(db=db, user=user, project_id=project_id)
         api_key = await ProjectService.get_project_api_key(db=db, project_id=project.id)
         adapter = get_adapter(project.provider)
         model_name = self.resolve_model_name(project.provider, project.model_name)
@@ -74,7 +72,7 @@ class QueryService:
             answer = await adapter.generate_response(prompt=prompt, api_key=api_key, model=model_name)
             db.add(
                 RequestLog(
-                    user_id=user.id,
+                    user_id=project.user_id,
                     project_id=project.id,
                     provider=project.provider,
                     model_name=model_name,
@@ -88,7 +86,7 @@ class QueryService:
         except Exception as exc:
             db.add(
                 RequestLog(
-                    user_id=user.id,
+                    user_id=project.user_id,
                     project_id=project.id,
                     provider=project.provider,
                     model_name=model_name,
@@ -105,12 +103,10 @@ class QueryService:
     async def stream_query(
         self,
         db: AsyncSession,
-        user: User,
-        project_id: int,
+        project: Project,
         user_query: str,
         top_k: int,
     ) -> tuple[AsyncGenerator[str, None], list[str]]:
-        project = await ProjectService.get_project_or_404(db=db, user=user, project_id=project_id)
         api_key = await ProjectService.get_project_api_key(db=db, project_id=project.id)
         adapter = get_adapter(project.provider)
         model_name = self.resolve_model_name(project.provider, project.model_name)

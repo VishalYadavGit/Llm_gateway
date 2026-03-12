@@ -189,7 +189,7 @@
         </div>
         <div class="field">
           <label for="token">Access Token</label>
-          <textarea id="token" placeholder="JWT will appear here after login/register"></textarea>
+          <textarea id="token" placeholder="JWT will appear here after Get Access Token"></textarea>
         </div>
         <div class="field">
           <label for="prompt">Prompt</label>
@@ -280,19 +280,14 @@
       const base = normalizeBaseUrl();
       const token = tokenEl.value.trim();
       const prompt = promptEl.value.trim();
-      const projectId = Number(projectIdEl.value);
       const stream = Boolean(streamEl.checked);
 
       if (!token) {
-        setStatus('Access token is required. Login/register first.', false);
+        setStatus('Access token is required. Click Get Access Token first.', false);
         return;
       }
       if (!prompt) {
         setStatus('Prompt is required.', false);
-        return;
-      }
-      if (!projectId || projectId < 1) {
-        setStatus('Valid project_id is required.', false);
         return;
       }
 
@@ -308,7 +303,6 @@
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            project_id: projectId,
             query: prompt,
             stream,
             top_k: 6,
