@@ -60,17 +60,31 @@ class QdrantService:
         return vector_id
 
     async def search(self, project_id: int, query_vector: list[float], limit: int) -> list[dict]:
-        hits = await self.client.search(
-            collection_name=self.collection,
-            query_vector=query_vector,
-            limit=limit,
-            query_filter=qdrant_models.Filter(
-                must=[
-                    qdrant_models.FieldCondition(
-                        key="project_id",
-                        match=qdrant_models.MatchValue(value=project_id),
-                    )
-                ]
-            ),
+        query_filter = qdrant_models.Filter(
+            must=[
+                qdrant_models.FieldCondition(
+                    key="project_id",
+                    match=qdrant_models.MatchValue(value=project_id),
+                )
+            ]
         )
-        return [hit.payload for hit in hits if hit.payload]
+
+        # qdrant-client API differs by version: older releases expose `search`,
+        # newer releases expose `query_points`.
+        if hasattr(self.client, "search"):
+            hits = await self.client.search(
+                collection_name=self.collection,
+                query_vector=query_vector,
+                limit=limit,
+                query_filter=query_filter,
+            )
+            return [hit.payload for hit in hits if hit.payload]
+
+        response = await self.client.query_points(
+            collection_name=self.collection,
+            query=query_vector,
+            limit=limit,
+            query_filter=query_filter,
+        )
+        points = getattr(response, "points", None) or []
+        return [point.payload for point in points if getattr(point, "payload", None)]
