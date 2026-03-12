@@ -4,25 +4,138 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LLM Gateway</title>
-    <link rel="stylesheet" href="/assets/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles.css?v=20260311" />
   </head>
   <body>
-    <div class="container">
-      <header class="topbar">
-        <div class="brand">LLM Gateway</div>
-        <a href="/admin" class="nav-link">Open Admin Panel</a>
-      </header>
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="logo">LLM Gateway</div>
+        <nav class="nav-menu">
+          <a href="#features" class="nav-item">Features</a>
+          <a href="/docs" class="nav-item">API Docs</a>
+          <a href="/admin" class="nav-item cta-link">Get Started</a>
+        </nav>
+      </div>
+    </header>
 
-      <main class="hero">
-        <h1>Run your AI projects from one gateway.</h1>
-        <p>
-          A very simple control point for teams that need provider keys, model routing, and document uploads in one place.
-          Create a project, pick a provider, choose a model, and ingest files for retrieval workflows.
-        </p>
-      </main>
-    </div>
+    <main>
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="container-wide">
+          <div class="hero-content">
+            <h1>Fast AI integration for your product</h1>
+            <p class="hero-subtitle">Create an account, generate access tokens, call a single API, and return customized AI responses directly inside your site or app.</p>
+            <div class="hero-cta">
+              <a href="/admin" class="btn-primary">Launch Admin Panel</a>
+              <a href="/docs" class="btn-secondary">View API Documentation</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Problem Statement -->
+      <section class="problem-section">
+        <div class="container-wide">
+          <h2>Why teams choose LLM Gateway</h2>
+          <div class="problem-grid">
+            <div class="problem-item">
+              <h3>Go live faster</h3>
+              <p>Integrate AI into existing websites quickly without building provider-specific logic for every project.</p>
+            </div>
+            <div class="problem-item">
+              <h3>One API surface</h3>
+              <p>Post prompts and fetch responses through a unified endpoint, while routing to the right model behind the scenes.</p>
+            </div>
+            <div class="problem-item">
+              <h3>Secure by default</h3>
+              <p>Use project-level credentials and access tokens to control who can send requests and retrieve responses.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Solution Section -->
+      <section class="solution-section" id="features">
+        <div class="container-wide">
+          <h2>Our solution</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">01</div>
+              <h3>Multi-Provider Routing</h3>
+              <p>Seamlessly switch between OpenAI, Google Gemini, and Anthropic Claude on a per-project basis. No code changes required.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">02</div>
+              <h3>Secure API Management</h3>
+              <p>Encrypted storage of API keys with project-level isolation. Full audit logs for every operation and key access.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">03</div>
+              <h3>Document Intelligence</h3>
+              <p>Upload TXT and PDF files. Automatic chunking, embedding generation, and semantic indexing for RAG pipelines.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">04</div>
+              <h3>Context-Grounded Queries</h3>
+              <p>Query your documents with automatic context retrieval. LLM Gateway grounds responses in indexed content.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">05</div>
+              <h3>Centralized Configuration</h3>
+              <p>Single admin panel for model selection, prompt tuning, ingestion pipelines, and rate limiting across all projects.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">06</div>
+              <h3>Request Analytics</h3>
+              <p>Monitor API usage, latency, and costs by project and provider. Track embeddings and document processing metrics.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="how-section">
+        <div class="container-wide">
+          <h2>How integration works</h2>
+          <div class="steps-grid">
+            <div class="step">
+              <div class="step-number">1</div>
+              <h3>Create your account</h3>
+              <p>Sign in to the admin panel and create a project for your website or application.</p>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <h3>Generate API credentials</h3>
+              <p>Create project API keys and access tokens to authenticate requests safely from your backend.</p>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <h3>Post prompts to the API</h3>
+              <p>Send a request with your token to the query endpoint and choose provider and model behavior per project.</p>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <h3>Fetch customized responses</h3>
+              <p>Return tailored AI output to your frontend in real time, with optional document grounding for higher accuracy.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section">
+        <div class="container-wide">
+          <h2>Launch AI features in days, not months</h2>
+          <p>Set up your account, issue tokens, and connect your product to production-ready AI endpoints.</p>
+          <a href="/admin" class="btn-primary btn-large">Access the Admin Panel</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container-wide">
+        <p>&copy; 2026 LLM Gateway. Building the future of AI operations.</p>
+      </div>
+    </footer>
   </body>
 </html>

@@ -4,21 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Panel - LLM Gateway</title>
-    <link rel="stylesheet" href="/assets/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles.css?v=20260311" />
   </head>
-  <body>
-    <div class="container">
-      <header class="topbar">
-        <div class="brand">LLM Gateway Admin</div>
-        <a href="/" class="nav-link">Back to Landing</a>
-      </header>
+  <body class="admin-page">
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="logo">LLM Gateway Admin</div>
+        <nav class="nav-menu">
+          <a href="/docs" class="nav-item">API Docs</a>
+          <a href="/" class="nav-item cta-link">Back to Landing</a>
+        </nav>
+      </div>
+    </header>
 
-      <section class="row">
+    <main class="admin-main container-wide">
+
+      <section class="admin-intro">
+        <p class="eyebrow">Control Room</p>
+        <h1>Project Configuration & Document Operations</h1>
+        <p>Authenticate once, then create, tune, and maintain project-level AI settings from a single panel.</p>
+      </section>
+
+      <section id="authGate" class="row auth-layout">
         <article class="card span-6">
-          <h2>Register</h2>
+          <h2>Sign Up</h2>
           <form id="registerForm">
             <label for="registerEmail">Email</label>
             <input id="registerEmail" type="email" required />
@@ -48,16 +57,19 @@
           </form>
           <p class="note">Login stores your token in browser storage for quick reuse.</p>
         </article>
+      </section>
 
+      <section id="panelShell" class="hidden">
+        <section class="row">
         <article class="card span-12">
           <h2>Your Projects</h2>
           <button class="secondary" id="refreshProjects" type="button">Refresh Projects</button>
           <p id="projectsOutput" class="output"></p>
           <ul id="projectList" class="list"></ul>
         </article>
-      </section>
+        </section>
 
-      <section id="adminForms" class="row hidden" style="margin-top:16px">
+        <section id="adminForms" class="row admin-forms">
         <article class="card span-6">
           <h2>Create Project</h2>
           <form id="projectForm">
@@ -129,8 +141,9 @@
             <p id="editProjectOutput" class="output"></p>
           </form>
         </article>
+        </section>
       </section>
-    </div>
+    </main>
 
     <script>
       const registerForm = document.getElementById("registerForm");
@@ -142,6 +155,8 @@
       const projectSelect = document.getElementById("projectSelect");
       const editProjectForm = document.getElementById("editProjectForm");
       const editProjectSelect = document.getElementById("editProjectSelect");
+      const authGate = document.getElementById("authGate");
+      const panelShell = document.getElementById("panelShell");
       const adminForms = document.getElementById("adminForms");
 
       const registerOutput = document.getElementById("registerOutput");
@@ -178,6 +193,12 @@
 
 
       let token = localStorage.getItem("gateway_token") || "";
+
+      const showAuthorizedUI = (authorized) => {
+        authGate.classList.toggle("hidden", authorized);
+        panelShell.classList.toggle("hidden", !authorized);
+        adminForms.classList.toggle("hidden", !authorized);
+      };
 
       const authHeaders = () => ({
         Authorization: `Bearer ${token}`,
@@ -260,13 +281,15 @@
         try {
           if (!token) {
             setOutput(projectsOutput, "Login first.", true);
-            return;
+            return false;
           }
           const projects = await fetchProjects();
           renderProjects(projects);
           setOutput(projectsOutput, `Loaded ${projects.length} project(s).`);
+          return true;
         } catch (error) {
           setOutput(projectsOutput, error.message, true);
+          return false;
         }
       }
 
@@ -280,7 +303,7 @@
           const data = await register(email, fullName, password);
           token = data.access_token;
           localStorage.setItem("gateway_token", token);
-          adminForms.classList.remove("hidden");
+          showAuthorizedUI(true);
           setOutput(registerOutput, "Registration successful. You are now logged in.");
           setOutput(loginOutput, "Authenticated via registration.");
           registerForm.reset();
@@ -299,7 +322,7 @@
           const data = await login(email, password);
           token = data.access_token;
           localStorage.setItem("gateway_token", token);
-          adminForms.classList.remove("hidden");
+          showAuthorizedUI(true);
           setOutput(loginOutput, "Login successful.");
           await refreshProjects();
         } catch (error) {
@@ -442,11 +465,33 @@
 
       refreshProjectsButton.addEventListener("click", refreshProjects);
 
-      if (token) {
-        adminForms.classList.remove("hidden");
-        setOutput(loginOutput, "Token loaded from browser storage.");
-        refreshProjects();
+      async function initializeAuthGate() {
+        showAuthorizedUI(false);
+        if (!token) {
+          return;
+        }
+
+        try {
+          const isValid = await refreshProjects();
+          if (isValid) {
+            showAuthorizedUI(true);
+            setOutput(loginOutput, "Token loaded from browser storage.");
+            return;
+          }
+
+          token = "";
+          localStorage.removeItem("gateway_token");
+          showAuthorizedUI(false);
+          setOutput(loginOutput, "Session expired. Please login again.", true);
+        } catch (_) {
+          token = "";
+          localStorage.removeItem("gateway_token");
+          showAuthorizedUI(false);
+          setOutput(loginOutput, "Session expired. Please login again.", true);
+        }
       }
+
+      initializeAuthGate();
     </script>
   </body>
 </html>
