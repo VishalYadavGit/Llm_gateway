@@ -47,6 +47,13 @@ cp .env.example .env
 docker compose up --build
 ```
 
+If authentication starts failing with a bcrypt "password cannot be longer than 72 bytes" error even for short passwords, rebuild the images after dependency changes so Docker does not reuse an older incompatible `bcrypt` install:
+
+```bash
+docker compose build --no-cache api worker
+docker compose up
+```
+
 For local development without Docker, run the API and background worker together with one command:
 
 ```bash
