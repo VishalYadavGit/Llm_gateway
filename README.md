@@ -55,6 +55,8 @@ python main.py
 
 3. Open API docs:
 - http://localhost:8000/docs
+4. Frontend integration docs:
+- `docs/frontend.md`
 
 ## Main Endpoints
 
@@ -79,6 +81,28 @@ python main.py
 ## Streaming Query
 
 `POST /v1/query` accepts `stream=true` and responds as `text/event-stream`.
+
+## Website Embed (2-5 Lines)
+
+You can serve a ready-to-use browser SDK from this backend at:
+
+- `/assets/embed.js`
+
+Minimal integration:
+
+```html
+<!-- Required IDs: llm-gateway-input, llm-gateway-send, llm-gateway-output, llm-gateway-status(optional) -->
+<textarea id="llm-gateway-input"></textarea><button id="llm-gateway-send">Send</button><pre id="llm-gateway-output"></pre><small id="llm-gateway-status"></small>
+<script src="https://ai.devlooper.in/assets/embed.js"></script>
+<script>LLMGateway.bind({ inputId: "llm-gateway-input", sendButtonId: "llm-gateway-send", outputId: "llm-gateway-output", statusId: "llm-gateway-status" });</script>
+```
+
+Notes:
+
+- The user site origin must be registered as `allowed_origin` in your project.
+- The script automatically fetches `GET /v1/auth/token` and calls `POST /v1/query`.
+- Default API base is the same origin as the script URL; override with `apiBase` if needed.
+- Full frontend guide: `docs/frontend.md`.
 
 ## Security Notes
 
