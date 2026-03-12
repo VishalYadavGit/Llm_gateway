@@ -1,7 +1,7 @@
 # LLM Gateway (FastAPI + Multi-Tenant RAG)
 
 Production-oriented backend service that supports:
-- JWT authentication
+- Origin-based JWT authentication (domain validation)
 - Multi-tenant projects
 - Encrypted per-project provider API keys
 - PDF ingestion + chunking + embedding + Qdrant indexing
@@ -47,13 +47,6 @@ cp .env.example .env
 docker compose up --build
 ```
 
-If authentication starts failing with a bcrypt "password cannot be longer than 72 bytes" error even for short passwords, rebuild the images after dependency changes so Docker does not reuse an older incompatible `bcrypt` install:
-
-```bash
-docker compose build --no-cache api worker
-docker compose up
-```
-
 For local development without Docker, run the API and background worker together with one command:
 
 ```bash
@@ -65,8 +58,7 @@ python main.py
 
 ## Main Endpoints
 
-- `POST /v1/auth/register`
-- `POST /v1/auth/login`
+- `POST /v1/auth/token` — Request access token by origin
 - `POST /v1/projects`
 - `GET /v1/projects`
 - `POST /v1/documents/upload` (multipart: `project_id`, `file`)
@@ -79,6 +71,7 @@ python main.py
 
 ## Security Notes
 
+- **Authentication**: Origins (domains) must be pre-registered in the system. Send `GET /v1/auth/token` — no body needed. The server reads the `Origin` header automatically and returns a 15-minute access token if the origin is registered.
 - API keys are encrypted at rest with Fernet.
 - Project ownership is validated on every project/document/query operation.
 - Retrieved context is sanitized before prompt construction to reduce prompt-injection risk.

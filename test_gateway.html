@@ -151,24 +151,12 @@
   <main class="wrap">
     <section class="panel">
       <h1>LLM Gateway Quick Tester</h1>
-      <p class="muted">Login/register, get JWT access token, send a prompt to <code>/v1/query</code>, and view response.</p>
+      <p class="muted">Click <strong>Get Access Token</strong> — the browser Origin header is sent automatically. If your origin is registered, you'll receive a short-term token.</p>
 
       <div class="grid">
         <div class="field">
           <label for="baseUrl">Base URL</label>
           <input id="baseUrl" value="http://localhost:8000" />
-        </div>
-        <div class="field span-6">
-          <label for="email">Email</label>
-          <input id="email" type="email" placeholder="user@example.com" />
-        </div>
-        <div class="field span-6">
-          <label for="password">Password</label>
-          <input id="password" type="password" placeholder="your-password" />
-        </div>
-        <div class="field span-6">
-          <label for="fullName">Full Name (register only)</label>
-          <input id="fullName" placeholder="Test User" value="Test User" />
         </div>
         <div class="field span-6">
           <label for="projectId">Project ID</label>
@@ -210,8 +198,7 @@
       </div>
 
       <div class="row">
-        <button id="registerBtn" type="button">Register</button>
-        <button id="loginBtn" class="secondary" type="button">Login</button>
+        <button id="getTokenBtn" type="button">Get Access Token</button>
         <button id="updateProjectBtn" class="secondary" type="button">Update Project</button>
         <button id="sendBtn" class="ghost" type="button">Send Prompt</button>
         <label style="display:flex; align-items:center; gap:8px; margin:0 0 0 auto;">
@@ -230,9 +217,6 @@
 
   <script>
     const baseUrlEl = document.getElementById('baseUrl');
-    const emailEl = document.getElementById('email');
-    const passwordEl = document.getElementById('password');
-    const fullNameEl = document.getElementById('fullName');
     const projectIdEl = document.getElementById('projectId');
     const projectProviderEl = document.getElementById('projectProvider');
     const projectNameEl = document.getElementById('projectName');
@@ -261,30 +245,15 @@
       try { return JSON.parse(text); } catch (_) { return text; }
     }
 
-    async function auth(kind) {
-      const email = emailEl.value.trim();
-      const password = passwordEl.value;
-      const fullName = fullNameEl.value.trim();
+    async function getToken() {
       const base = normalizeBaseUrl();
 
-      if (!email || !password) {
-        setStatus('Email and password are required.', false);
-        return;
-      }
-
-      const endpoint = kind === 'register' ? '/v1/auth/register' : '/v1/auth/login';
-      const payload = kind === 'register'
-        ? { email, password, full_name: fullName || 'Test User' }
-        : { email, password };
-
-      setStatus(`${kind} request in progress...`);
-      responseEl.textContent = 'Waiting for auth response...';
+      setStatus('Requesting access token...');
+      responseEl.textContent = 'Waiting for token response...';
 
       try {
-        const res = await fetch(base + endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
+        const res = await fetch(base + '/v1/auth/token', {
+          method: 'GET',
         });
 
         const raw = await res.text();
@@ -292,7 +261,7 @@
 
         if (!res.ok) {
           responseEl.textContent = JSON.stringify(data, null, 2);
-          setStatus(`Auth failed (${res.status}).`, false);
+          setStatus(`Token request failed (${res.status}).`, false);
           return;
         }
 
@@ -300,7 +269,7 @@
         tokenEl.value = token;
         localStorage.setItem(STORAGE_KEY, token);
         responseEl.textContent = JSON.stringify(data, null, 2);
-        setStatus(`Auth success (${kind}).`);
+        setStatus('Access token obtained successfully.');
       } catch (error) {
         responseEl.textContent = String(error);
         setStatus(`Network error: ${error}`, false);
@@ -441,8 +410,7 @@
       }
     }
 
-    document.getElementById('registerBtn').addEventListener('click', () => auth('register'));
-    document.getElementById('loginBtn').addEventListener('click', () => auth('login'));
+    document.getElementById('getTokenBtn').addEventListener('click', getToken);
     document.getElementById('updateProjectBtn').addEventListener('click', updateProject);
     document.getElementById('sendBtn').addEventListener('click', sendPrompt);
   </script>
