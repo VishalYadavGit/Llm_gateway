@@ -2,7 +2,7 @@
   "use strict";
 
   var DEFAULTS = {
-    apiBase: "https://api.devlooper.in",
+    apiBase: "https://ai.devlooper.in",
     inputId: "llm-gateway-input",
     sendButtonId: "llm-gateway-send",
     outputId: "llm-gateway-output",
