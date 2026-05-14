@@ -6,6 +6,7 @@ from qdrant_client.http import models as qdrant_models
 from core.config import get_settings
 
 settings = get_settings()
+VECTOR_NAME = "embeddings"
 
 
 class QdrantService:
@@ -24,19 +25,24 @@ class QdrantService:
         if not exists:
             await self.client.create_collection(
                 collection_name=self.collection,
-                vectors_config=qdrant_models.VectorParams(
-                    size=settings.embedding_dimension,
-                    distance=qdrant_models.Distance.COSINE,
-                ),
+                vectors_config={
+                    VECTOR_NAME: qdrant_models.VectorParams(
+                        size=settings.embedding_dimension,
+                        distance=qdrant_models.Distance.COSINE,
+                    )
+                },
             )
 
         # Some Qdrant deployments require explicit payload indexing for filtered search.
-        await self.client.create_payload_index(
-            collection_name=self.collection,
-            field_name="project_id",
-            field_schema=qdrant_models.PayloadSchemaType.INTEGER,
-            wait=True,
-        )
+        try:
+            await self.client.create_payload_index(
+                collection_name=self.collection,
+                field_name="project_id",
+                field_schema=qdrant_models.PayloadSchemaType.INTEGER,
+                wait=True,
+            )
+        except Exception:
+            pass
 
     async def upsert_chunk(
         self,
@@ -55,7 +61,7 @@ class QdrantService:
         }
         await self.client.upsert(
             collection_name=self.collection,
-            points=[qdrant_models.PointStruct(id=vector_id, vector=vector, payload=payload)],
+            points=[qdrant_models.PointStruct(id=vector_id, vector={VECTOR_NAME: vector}, payload=payload)],
         )
         return vector_id
 
@@ -75,6 +81,7 @@ class QdrantService:
             hits = await self.client.search(
                 collection_name=self.collection,
                 query_vector=query_vector,
+                query_vector_name=VECTOR_NAME,
                 limit=limit,
                 query_filter=query_filter,
             )
@@ -83,6 +90,7 @@ class QdrantService:
         response = await self.client.query_points(
             collection_name=self.collection,
             query=query_vector,
+            query_vector_name=VECTOR_NAME,
             limit=limit,
             query_filter=query_filter,
         )
