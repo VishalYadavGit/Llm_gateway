@@ -81,7 +81,6 @@ class QdrantService:
             hits = await self.client.search(
                 collection_name=self.collection,
                 query_vector=query_vector,
-                query_vector_name=VECTOR_NAME,
                 limit=limit,
                 query_filter=query_filter,
             )
@@ -90,7 +89,6 @@ class QdrantService:
         response = await self.client.query_points(
             collection_name=self.collection,
             query=query_vector,
-            query_vector_name=VECTOR_NAME,
             limit=limit,
             query_filter=query_filter,
         )
